@@ -7,4 +7,5 @@ module Elchapo
 
   require 'elchapo/ethereum/client'
   require 'elchapo/ethereum/connection'
+  require 'elchapo/ethereum/http_connection'
 end
