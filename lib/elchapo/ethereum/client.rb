@@ -13,7 +13,7 @@ module Ethereum
 
     attr_accessor :command, :id, :log, :logger, :default_account, :gas_price, :gas_limit
 
-    def initialize(log = false)
+    def initialize
       @id = 0
       @log = log
       @batch = nil

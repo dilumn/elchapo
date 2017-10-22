@@ -3,8 +3,8 @@ module Ethereum
   class Connection < Client
     attr_accessor :ipcpath
 
-    def initialize(ipcpath, log = true)
-      super(log)
+    def initialize(ipcpath)
+      super
       @ipcpath = ipcpath
     end
 
