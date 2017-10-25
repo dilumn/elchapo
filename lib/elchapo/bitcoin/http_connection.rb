@@ -1,15 +1,17 @@
 require 'net/http'
 require 'json'
-module Ethereum
+module Bitcoin
   class HttpConnection < Client
     attr_accessor :host, :port, :uri, :ssl
 
-    def initialize(host)
+    def initialize(host, user:, pass:)
       super()
       uri = URI.parse(host)
       raise ArgumentError unless ['http', 'https'].include? uri.scheme
       @host = uri.host
       @port = uri.port
+      @user = user
+      @pass = pass
 
       @ssl = uri.scheme == 'https'
       if ssl
@@ -26,6 +28,7 @@ module Ethereum
       end
       header = {'Content-Type' => 'application/json'}
       request = ::Net::HTTP::Post.new(uri, header)
+      request.basic_auth(@user, @pass)
       request.body = payload
       response = http.request(request)
       return response.body

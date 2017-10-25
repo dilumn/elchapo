@@ -1,8 +1,10 @@
 # Elchapo
 
-Ruby API for Ethereum Blockchain network
+Ruby API for Ethereum & Bitcoin Blockchain networks
 
-## IPC Connection
+## Ethereum
+
+### IPC Connection
 
 ```ruby
 require 'elchapo'

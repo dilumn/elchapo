@@ -4,7 +4,7 @@ module Ethereum
     attr_accessor :ipcpath
 
     def initialize(ipcpath)
-      super
+      super()
       @ipcpath = ipcpath
     end
 

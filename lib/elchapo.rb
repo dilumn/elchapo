@@ -8,4 +8,7 @@ module Elchapo
   require 'elchapo/ethereum/client'
   require 'elchapo/ethereum/connection'
   require 'elchapo/ethereum/http_connection'
+
+  require 'elchapo/bitcoin/client'
+  require 'elchapo/bitcoin/http_connection'
 end
