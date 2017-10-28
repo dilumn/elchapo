@@ -6,6 +6,14 @@ Ruby API for Ethereum & Bitcoin Blockchain networks
 
 ### IPC Connection
 
+Have a look at this blog post for a detail description about [Connect to Ethereum node using IPC](http://dilumn.github.io/ethereum/2017/10/22/connect-to-ethereum-ipc-using-ruby/)
+
+## Installation
+Once you've verified that Ruby is installed:
+
+`gem install git-plan`
+
+
 ```ruby
 require 'elchapo'
 
