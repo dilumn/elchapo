@@ -11,29 +11,53 @@ Have a look at this blog post for a detail description about [Connect to Ethereu
 ## Installation
 Once you've verified that Ruby is installed:
 
-`gem install git-plan`
+`gem install elchapo`
 
 
 ```ruby
 require 'elchapo'
 
-client = Ethereum::Connection.new("/root/.ethereum/rinkeby/geth.ipc")
-
 ```
 
-After you create the connection client, you can use all these Ethereum `eth` commands & call those methods.
+IPC Client for Ethereum
+
+```
+eth_client = Ethereum::Connection.new("/root/.ethereum/rinkeby/geth.ipc")
+```
+
+RPC Client for Ethereum
+
+```
+eth_client = Ethereum::HttpConnection.new("http://0.0.0.0:8545")
+```
+
+RPC Client for Bitcoin
+
+```
+btc_client = Bitcoin::HttpConnection.new("http://127.0.0.1:18333", user: "foo", pass: "bar")
+```
+
+After you create the connection client, you can use all these Ethereum `eth` commands & Bitcoin RPC commands.
 
 [https://github.com/ethereum/wiki/wiki/JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC)
 
 [https://github.com/ethereum/go-ethereum/wiki/Management-APIs](https://github.com/ethereum/go-ethereum/wiki/Management-APIs)
 
-`client.eth_accounts`
+[https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list)
+
+`eth_client.eth_accounts`
+
+`btc_client.getinfo`
+
+You can pass parameters as method arguments,
+
+`btc_client.sendtoaddress("awl2llkjalwo209ao23rjaslkjv30", 0.1)`
 
 Make sure you are using underscore instead of capitals. Eg: `getBalance` => `get_balance`
 
 `client.get_balance("ACCOUNT NUMBER")`
 
-This gem is inspired & forked from [ethereum.rb](https://github.com/EthWorks/ethereum.rb)
+This gem is inspired from [ethereum.rb](https://github.com/EthWorks/ethereum.rb)
 
 ## License
 
