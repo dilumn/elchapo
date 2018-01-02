@@ -18,9 +18,9 @@ module Bitcoin
 
       @ssl = uri.scheme == 'https'
       if ssl
-        @uri = URI("https://#{@host}:#{@port}")
+        @uri = URI("#{@host}:#{@port}")
       else
-        @uri = URI("http://#{@host}:#{@port}")
+        @uri = URI("#{@host}:#{@port}")
       end
 
       @header = {'Content-Type' => 'application/json'}
