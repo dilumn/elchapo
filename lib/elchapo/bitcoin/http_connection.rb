@@ -24,7 +24,7 @@ module Bitcoin
       end
 
       @header = {'Content-Type' => 'application/json'}
-      @request = ::Net::HTTP::Post.new(uri, header)
+      # @request = ::Net::HTTP::Post.new(uri, header)
     end
 
     def send_single(payload)
