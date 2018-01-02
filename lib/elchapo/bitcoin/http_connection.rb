@@ -12,6 +12,7 @@ module Bitcoin
       @port = uri.port
       @user = user
       @pass = pass
+      @http = ::Net::HTTP.new(@host, @port)
 
       @ssl = uri.scheme == 'https'
       if ssl
@@ -19,18 +20,19 @@ module Bitcoin
       else
         @uri = URI("http://#{@host}:#{@port}")
       end
+
+      header = {'Content-Type' => 'application/json'}
+      @request = ::Net::HTTP::Post.new(uri, header)
     end
 
     def send_single(payload)
-      http = ::Net::HTTP.new(@host, @port)
       if @ssl
-        http.use_ssl = true
+        @http.use_ssl = true
       end
-      header = {'Content-Type' => 'application/json'}
-      request = ::Net::HTTP::Post.new(uri, header)
-      request.basic_auth(@user, @pass)
-      request.body = payload
-      response = http.request(request)
+
+      @request.basic_auth(@user, @pass)
+      @request.body = payload
+      response = @http.request(@request)
       return response.body
     end
 
