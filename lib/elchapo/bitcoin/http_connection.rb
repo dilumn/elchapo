@@ -23,7 +23,7 @@ module Bitcoin
         @uri = URI("http://#{@host}:#{@port}")
       end
 
-      header = {'Content-Type' => 'application/json'}
+      @header = {'Content-Type' => 'application/json'}
       @request = ::Net::HTTP::Post.new(uri, header)
     end
 
@@ -38,7 +38,7 @@ module Bitcoin
         method: :post,
         url: uri,
         payload: payload,
-        headers: header
+        headers: @header
       )
 
       # @request.basic_auth(@user, @pass)
