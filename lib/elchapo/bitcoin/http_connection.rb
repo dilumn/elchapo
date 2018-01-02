@@ -1,5 +1,7 @@
 require 'net/http'
 require 'json'
+require 'rest-client'
+
 module Bitcoin
   class HttpConnection < Client
     attr_accessor :host, :port, :uri, :ssl
@@ -30,10 +32,19 @@ module Bitcoin
         @http.use_ssl = true
       end
 
-      @request.basic_auth(@user, @pass)
-      @request.body = payload
-      response = @http.request(@request)
-      return response.body
+      resp = RestClient::Request.execute(
+        user: @user,
+        password: @pass,
+        method: :post,
+        url: uri,
+        payload: payload,
+        headers: header
+      )
+
+      # @request.basic_auth(@user, @pass)
+      # @request.body = payload
+      # response = @http.request(@request)
+      return resp
     end
 
   end
