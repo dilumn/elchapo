@@ -1,6 +1,6 @@
 # Elchapo
 
-Ruby API for Ethereum & Bitcoin Blockchain networks
+Ruby API for Ethereum & Bitcoin Blockchain networks.
 
 ## Ethereum
 
